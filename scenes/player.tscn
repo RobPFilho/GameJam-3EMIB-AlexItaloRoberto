@@ -301,6 +301,12 @@ theme_override_font_sizes/font_size = 28
 text = "Pause"
 vertical_alignment = 1
 
+[node name="TIMERDEBUG" type="Label" parent="CanvasLayer/Control" unique_id=415239526]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "TIMER DEBUG: AAAAAA"
+
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=381802466]
 process_mode = 2
 visible = false
@@ -476,6 +482,9 @@ volume_db = -2.0
 max_distance = 380.0
 bus = &"portal"
 
+[node name="Invuln" type="Timer" parent="." unique_id=24765938]
+one_shot = true
+
 [connection signal="button_up" from="CanvasLayer/Control/Pause" to="." method="_on_pause_button_up"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/Pause" to="." method="_on_pause_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/Pause" to="." method="_on_pause_mouse_exited"]
@@ -486,3 +495,4 @@ bus = &"portal"
 [connection signal="mouse_entered" from="CanvasLayer/PauseMenu/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/PauseMenu/Quit" to="." method="_on_quit_mouse_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Invuln" to="." method="_on_invuln_timeout"]

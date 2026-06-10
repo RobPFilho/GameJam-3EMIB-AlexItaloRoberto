@@ -32,10 +32,10 @@ animations = [{
 size = Vector2(38, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
-size = Vector2(42, 11.5)
+size = Vector2(46, 11.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
-size = Vector2(34, 8)
+size = Vector2(32, 8)
 
 [sub_resource type="Animation" id="Animation_c4w8v"]
 length = 0.001

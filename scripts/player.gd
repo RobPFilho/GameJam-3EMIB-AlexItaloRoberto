@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -550.0
 const cena_porta = preload("res://scenes/porta.tscn")
-
+@onready var invuln: Timer = $Invuln
 @onready var jump: AudioStreamPlayer2D = $jump
 @onready var die: AudioStreamPlayer2D = $die
 @onready var step: AudioStreamPlayer2D = $step
@@ -11,7 +11,7 @@ const cena_porta = preload("res://scenes/porta.tscn")
 @onready var nivel_passado = get_tree().get_first_node_in_group("past")
 @onready var nivel_presente = get_tree().get_first_node_in_group("present")
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
+var esta_invuln = false
 var timeline_cooldown := 0.0
 var estava_no_chao := false
 var passo_timer := 0.0
@@ -41,6 +41,8 @@ func esta_dentro_de_parede() -> bool:
 	return false
 
 func morrer():
+	if esta_invuln:
+		return
 	if morto:
 		return
 	morto = true
@@ -81,6 +83,7 @@ func spawnar_porta():
 		instancia.global_position.y = global_position.y-18
 
 func _process(delta: float) -> void:
+	$CanvasLayer/Control/TIMERDEBUG.text = 'TIMER DEBUG: '+str(invuln.time_left)+' '+str(esta_invuln)
 	if morto:
 		return
 	if Input.is_action_just_pressed("portal"):
@@ -153,7 +156,8 @@ func alternar_linha_do_tempo():
 
 	nivel_passado.visible = no_passado
 	nivel_presente.visible = !no_passado
-
+	esta_invuln = true
+	invuln.start()
 	processar_no_linha_do_tempo(nivel_passado, no_passado)
 	processar_no_linha_do_tempo(nivel_presente, !no_passado)
 	await get_tree().physics_frame
@@ -284,3 +288,7 @@ func _on_quit_mouse_exited() -> void:
 
 func _on_quit_mouse_entered() -> void:
 	$hover.play()
+
+
+func _on_invuln_timeout() -> void:
+	esta_invuln = false

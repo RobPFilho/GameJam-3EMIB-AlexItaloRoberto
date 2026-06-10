@@ -1,6 +1,7 @@
+Label
+Timer
 AudioStreamPlayer2D
 RichTextLabel
-Label
 AnimationPlayer
 ColorRect
 Control
@@ -11,4 +12,3 @@ Area2D
 PointLight2D
 TileMapLayer
 AnimationTree
-Sprite2D
