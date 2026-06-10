@@ -1,7 +1,14 @@
-res://scenes/menu.tscn
+res://scenes/level_3.tscn
 res://scripts/porta.gdshader
 res://scripts/outline.gdshader
 res://scripts/vinheta.gdshader
 res://tilesets/new_tile_set.tres
 res://scripts/text.gdshader
-res://scenes/level_3.tscn
+res://scenes/level_4.tscn
+res://scripts/trigger_final.gd
+res://cutscene_final.tscn
+res://scenes/enemy.tscn
+res://scripts/player.gd
+res://scenes/level_1.tscn
+res://scripts/killzone.gd
+res://scenes/player.tscn

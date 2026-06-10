@@ -2,8 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://cg7kdj2e6oqee" path="res://scenes/level_2.tscn" id="1_rc2uo"]
 [ext_resource type="PackedScene" uid="uid://d3djo5dx5lofp" path="res://scenes/enemy.tscn" id="2_6j14n"]
-[ext_resource type="AudioStream" uid="uid://b0wt2ajf42c2w" path="res://sounds/song1.mp3" id="3_rbbjd"]
-[ext_resource type="Script" uid="uid://b73g3rk7lr5ui" path="res://scripts/music.gd" id="4_wom6i"]
 
 [node name="level4" unique_id=141018651 instance=ExtResource("1_rc2uo")]
 
@@ -39,8 +37,3 @@ position = Vector2(4532, -8)
 
 [node name="DialogTrigger2" parent="." index="6" unique_id=1221657095]
 position = Vector2(5500, -377)
-
-[node name="music" type="AudioStreamPlayer2D" parent="." index="7" unique_id=2098462863]
-stream = ExtResource("3_rbbjd")
-parameters/looping = true
-script = ExtResource("4_wom6i")

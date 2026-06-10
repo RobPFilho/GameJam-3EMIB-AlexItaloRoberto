@@ -333,8 +333,8 @@ tracks/2/path = NodePath("Player:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3.4995182, 3.5),
-"transitions": PackedFloat32Array(1e-05, 1),
+"times": PackedFloat32Array(3.4999, 3.5),
+"transitions": PackedFloat32Array(1e-05, 1e-05),
 "update": 1,
 "values": [&"lay", &"idle"]
 }
@@ -345,7 +345,7 @@ tracks/3/path = NodePath("Player:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3.4995182, 3.5, 7, 7.5),
+"times": PackedFloat32Array(3.4999, 3.5, 7, 7.5),
 "transitions": PackedFloat32Array(1e-05, 1, 0.27739248, 1),
 "update": 0,
 "values": [0.0, 1.5707964, 1.5707964, 0.0]
@@ -357,10 +357,10 @@ tracks/4/path = NodePath("Player:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(3.4995182, 3.5, 7, 7.5),
+"times": PackedFloat32Array(3.4999, 3.5, 7, 7.5),
 "transitions": PackedFloat32Array(1e-05, 1, 0.27739248, 1),
 "update": 0,
-"values": [Vector2(364, -25), Vector2(352, 19.999996), Vector2(352, 19.999996), Vector2(307, 7)]
+"values": [Vector2(364, -25), Vector2(352, 22.7), Vector2(352, 19.999996), Vector2(307, 7)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false

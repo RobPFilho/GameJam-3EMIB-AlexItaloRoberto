@@ -156,7 +156,6 @@ func alternar_linha_do_tempo():
 
 	processar_no_linha_do_tempo(nivel_passado, no_passado)
 	processar_no_linha_do_tempo(nivel_presente, !no_passado)
-	empurrar_inimigos()
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 
@@ -175,19 +174,6 @@ func alternar_linha_do_tempo():
 		$CanvasLayer/Control/Meter/NeedleAnim.play(
 			"passado" if no_passado else "presente"
 		)
-
-func empurrar_inimigos():
-	for inimigo in get_tree().get_nodes_in_group("enemy"):
-		if inimigo.process_mode == Node.PROCESS_MODE_DISABLED:
-			continue
-
-		if global_position.distance_to(inimigo.global_position) < 48:
-			var direcao = (inimigo.global_position - global_position).normalized()
-
-			if direcao == Vector2.ZERO:
-				direcao = Vector2.RIGHT
-
-			inimigo.global_position += direcao * 64
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
