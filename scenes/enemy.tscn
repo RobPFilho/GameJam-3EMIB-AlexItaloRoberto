@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://d3djo5dx5lofp"]
+
+[ext_resource type="Script" uid="uid://buau28s37wayy" path="res://scripts/enemy.gd" id="1_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://bxnvysp0rqu8w" path="res://sprites/slime.png" id="2_5uy6h"]
+[ext_resource type="PackedScene" uid="uid://dnx26f1o2edov" path="res://scenes/killzone.tscn" id="4_5uy6h"]
+[ext_resource type="Script" uid="uid://bqx0i0s4q0wcc" path="res://scenes/diezone.gd" id="5_c4w8v"]
+[ext_resource type="AudioStream" uid="uid://bsf6hjqfw0oq5" path="res://sounds/die.wav" id="5_xwavj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwavj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwavj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w8v")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nenq2"]
+size = Vector2(38, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
+size = Vector2(42, 11.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
+size = Vector2(34, 8)
+
+[sub_resource type="Animation" id="Animation_c4w8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xwavj"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.30778614, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.30778614, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dieSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_xwavj")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Killzone")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nenq2"]
+_data = {
+&"RESET": SubResource("Animation_c4w8v"),
+&"die": SubResource("Animation_xwavj")
+}
+
+[node name="enemy" type="CharacterBody2D" unique_id=1355312283 groups=["enemies"]]
+z_index = 1
+script = ExtResource("1_4ra3w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1206396196]
+texture_filter = 1
+position = Vector2(-2.3841858e-07, -7)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_xwavj")
+animation = &"walk"
+frame_progress = 0.5088678
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=138968046]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_nenq2")
+
+[node name="FloorLeft" type="RayCast2D" parent="." unique_id=424800473]
+position = Vector2(0, 5)
+target_position = Vector2(-20, 10)
+
+[node name="FloorRight" type="RayCast2D" parent="." unique_id=1110620181]
+position = Vector2(0, 5)
+target_position = Vector2(20, 10)
+
+[node name="Killzone" parent="." unique_id=1198240105 instance=ExtResource("4_5uy6h")]
+position = Vector2(20, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=901801577]
+position = Vector2(-20, 5.75)
+shape = SubResource("RectangleShape2D_c4w8v")
+
+[node name="Diezone" type="Area2D" parent="." unique_id=107018]
+script = ExtResource("5_c4w8v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Diezone" unique_id=1137412677]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_xwavj")
+
+[node name="dieSound" type="AudioStreamPlayer2D" parent="." unique_id=982119699]
+
+[node name="die" type="AnimationPlayer" parent="." unique_id=634930281]
+libraries/ = SubResource("AnimationLibrary_nenq2")
+
+[connection signal="body_entered" from="Diezone" to="Diezone" method="_on_body_entered"]

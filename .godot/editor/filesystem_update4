@@ -1,0 +1,7 @@
+res://scenes/menu.tscn
+res://scripts/porta.gdshader
+res://scripts/outline.gdshader
+res://scripts/vinheta.gdshader
+res://tilesets/new_tile_set.tres
+res://scripts/text.gdshader
+res://scenes/level_3.tscn

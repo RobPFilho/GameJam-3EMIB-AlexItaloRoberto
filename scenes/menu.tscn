@@ -1,0 +1,571 @@
+[gd_scene format=3 uid="uid://bftfolb7opl0m"]
+
+[ext_resource type="Script" uid="uid://cxf62k5f4583b" path="res://scripts/menu.gd" id="1_vjb58"]
+[ext_resource type="Shader" uid="uid://lks88x17wg18" path="res://scripts/porta.gdshader" id="2_con2f"]
+[ext_resource type="AudioStream" uid="uid://dbw0erwwwvjsk" path="res://sounds/flashback.mp3" id="2_g6gyw"]
+[ext_resource type="FontFile" uid="uid://baquniuy4tqf8" path="res://fonts/Frickbears-Regular.otf" id="2_mhnvy"]
+[ext_resource type="Texture2D" uid="uid://dvj5g8qdon00o" path="res://sprites/MenuBG.png" id="3_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://4dp1o1yg52q3" path="res://sprites/MenuDoor.png" id="5_g3eks"]
+[ext_resource type="Shader" uid="uid://btoy852d464yj" path="res://scripts/vinheta.gdshader" id="6_g3eks"]
+[ext_resource type="Shader" uid="uid://bx3mc7q331i54" path="res://scripts/text.gdshader" id="6_v86rl"]
+[ext_resource type="Texture2D" uid="uid://7tvtrny6chxf" path="res://sprites/BeyondTheFrame.png" id="7_13sgg"]
+[ext_resource type="Texture2D" uid="uid://biu0r01cmx00v" path="res://sprites/Z.png" id="7_70i5f"]
+[ext_resource type="Texture2D" uid="uid://cc8b1n036vqid" path="res://sprites/MenuChar.png" id="8_mj5lg"]
+[ext_resource type="Texture2D" uid="uid://btmcig71khuhu" path="res://sprites/button_sheet.png" id="10_mj5lg"]
+[ext_resource type="AudioStream" uid="uid://byiwjdrkj8iwf" path="res://sounds/UISelect.mp3" id="12_6cdou"]
+[ext_resource type="AudioStream" uid="uid://b2fjwn6moovoq" path="res://sounds/UIAccept.mp3" id="13_i42df"]
+[ext_resource type="AudioStream" uid="uid://dmkrwwrgxxf0s" path="res://sounds/creak1.mp3" id="14_7jp70"]
+[ext_resource type="AudioStream" uid="uid://5t1k7uwqx72c" path="res://sounds/creak2.mp3" id="15_mxgkd"]
+[ext_resource type="AudioStream" uid="uid://bb3ncbboqtqno" path="res://sounds/slam.mp3" id="16_mxgkd"]
+[ext_resource type="AudioStream" uid="uid://cw80swui5m067" path="res://sounds/nightAmbient.mp3" id="18_3dmrc"]
+
+[sub_resource type="Animation" id="Animation_mj5lg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7458131, 0.5533054, 0.9343941, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ambience:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_i42df"]
+resource_name = "zoom"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.7458131, 0.5533054, 0.9343941, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5743491, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.0832477, 2.0832477)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Control:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5743491, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-4.000122, -537)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../flashback")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_g6gyw")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ambience:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7jp70"]
+_data = {
+&"RESET": SubResource("Animation_mj5lg"),
+&"zoom": SubResource("Animation_i42df")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhnvy"]
+shader = ExtResource("2_con2f")
+shader_parameter/flame_strength = 6.55
+shader_parameter/speed = 1.985
+shader_parameter/pixel_size = 61.078002711205
+shader_parameter/tint = Color(0.47843137, 0.18039216, 0.7058824, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6lef"]
+shader = ExtResource("6_v86rl")
+shader_parameter/strength = 0.455
+shader_parameter/speed = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_70i5f"]
+shader = ExtResource("6_v86rl")
+shader_parameter/strength = 0.135
+shader_parameter/speed = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v86rl"]
+atlas = ExtResource("5_g3eks")
+region = Rect2(0, 0, 70, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13sgg"]
+atlas = ExtResource("5_g3eks")
+region = Rect2(70, 0, 70, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6lef"]
+atlas = ExtResource("5_g3eks")
+region = Rect2(140, 0, 70, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70i5f"]
+atlas = ExtResource("5_g3eks")
+region = Rect2(210, 0, 70, 113)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mj5lg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v86rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13sgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6lef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70i5f")
+}],
+"loop": false,
+"name": &"move",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v86rl")
+}],
+"loop": false,
+"name": &"slam",
+"speed": 8.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13sgg"]
+shader = ExtResource("6_v86rl")
+shader_parameter/strength = 1.735
+shader_parameter/speed = 8.0
+
+[sub_resource type="Gradient" id="Gradient_ufwb2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6cdou"]
+gradient = SubResource("Gradient_ufwb2")
+
+[sub_resource type="Curve" id="Curve_i42df"]
+_data = [Vector2(0, 0.6910113), 0.0, 0.0, 0, 0, Vector2(0.99025977, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7jp70"]
+curve = SubResource("Curve_i42df")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mxgkd"]
+particle_flag_disable_z = true
+gravity = Vector3(4.235, -3.81, 0)
+scale_min = 5.0
+scale_max = 5.2
+scale_curve = SubResource("CurveTexture_7jp70")
+color_ramp = SubResource("GradientTexture1D_6cdou")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6gyw"]
+shader = ExtResource("6_v86rl")
+shader_parameter/strength = 0.12
+shader_parameter/speed = 8.0
+
+[sub_resource type="Animation" id="Animation_3dmrc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(573.1111, 326.5)]
+}
+
+[sub_resource type="Animation" id="Animation_81l6r"]
+resource_name = "breathe"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(2.7320814, 0.21022417, 1),
+"update": 0,
+"values": [Vector2(573.1111, 326.5), Vector2(573.111, 322.535), Vector2(573.1111, 326.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rsfmq"]
+_data = {
+&"RESET": SubResource("Animation_3dmrc"),
+&"breathe": SubResource("Animation_81l6r")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mj5lg"]
+shader = ExtResource("6_v86rl")
+shader_parameter/strength = 0.355
+shader_parameter/speed = 8.0
+
+[sub_resource type="Animation" id="Animation_ufwb2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(302.00003, 143)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6cdou"]
+resource_name = "sway"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1.2311447, 2.7320802, 1.7411014),
+"update": 0,
+"values": [Vector2(301, 136), Vector2(302, 119.615), Vector2(301, 136)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 2.143547, 2.1435468, 1),
+"update": 0,
+"values": [0.0, -0.01745329251994329, 0.01745329251994329, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i42df"]
+_data = {
+&"RESET": SubResource("Animation_ufwb2"),
+&"sway": SubResource("Animation_6cdou")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufwb2"]
+atlas = ExtResource("10_mj5lg")
+region = Rect2(0, 0, 36, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cdou"]
+atlas = ExtResource("10_mj5lg")
+region = Rect2(36, 0, 36, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v86rl"]
+shader = ExtResource("6_g3eks")
+shader_parameter/vignette_strength = 0.9200000437
+shader_parameter/pixel_size = 128.0
+shader_parameter/warp_strength = 0.0
+shader_parameter/speed = 3.0830001464425
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+shader_parameter/opacity = 1.0
+
+[node name="Menu" type="Node2D" unique_id=1890093511]
+script = ExtResource("1_vjb58")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=38227921]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D" unique_id=2061598716]
+libraries/ = SubResource("AnimationLibrary_7jp70")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=1875825990]
+
+[node name="Control" type="Control" parent="Camera2D/CanvasLayer" unique_id=649082718]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Camera2D/CanvasLayer/Control" unique_id=1826858053]
+material = SubResource("ShaderMaterial_mhnvy")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 193.0
+offset_top = -253.0
+offset_right = 511.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Control" unique_id=934422422]
+texture_filter = 1
+material = SubResource("ShaderMaterial_i6lef")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4ytvr")
+
+[node name="Door" type="AnimatedSprite2D" parent="Camera2D/CanvasLayer/Control" unique_id=1849446516]
+texture_filter = 1
+material = SubResource("ShaderMaterial_70i5f")
+position = Vector2(926.674, 326.6032)
+scale = Vector2(4.5049706, 4.5025973)
+sprite_frames = SubResource("SpriteFrames_mj5lg")
+animation = &"move"
+
+[node name="Label2" type="Label" parent="Camera2D/CanvasLayer/Control" unique_id=289258788]
+material = SubResource("ShaderMaterial_13sgg")
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -426.0
+offset_top = -627.0
+offset_right = -39.0
+offset_bottom = -570.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = ExtResource("2_mhnvy")
+theme_override_font_sizes/font_size = 48
+text = "Clique na porta"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Camera2D/CanvasLayer/Control" unique_id=209872838]
+texture_filter = 1
+position = Vector2(428.00003, 344)
+scale = Vector2(4.611111, 4.611111)
+amount = 3
+texture = ExtResource("7_70i5f")
+lifetime = 6.25
+process_material = SubResource("ParticleProcessMaterial_mxgkd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/CanvasLayer/Control" unique_id=685108799]
+texture_filter = 1
+material = SubResource("ShaderMaterial_g6gyw")
+position = Vector2(573.1111, 326.5)
+scale = Vector2(4.611111, 4.611111)
+texture = ExtResource("8_mj5lg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer/Control/Sprite2D2" unique_id=1482897873]
+libraries/ = SubResource("AnimationLibrary_rsfmq")
+autoplay = &"breathe"
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/CanvasLayer/Control" unique_id=263144495]
+texture_filter = 1
+material = SubResource("ShaderMaterial_mj5lg")
+position = Vector2(302.00003, 143)
+scale = Vector2(2.271739, 2.2717392)
+texture = ExtResource("7_13sgg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer/Control/Sprite2D" unique_id=161710931]
+libraries/ = SubResource("AnimationLibrary_i42df")
+autoplay = &"sway"
+
+[node name="PlayBtn" type="Button" parent="Camera2D/CanvasLayer/Control" unique_id=1404266520]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -383.0
+offset_top = -577.0
+offset_right = -67.0
+offset_bottom = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Quit" type="TextureButton" parent="Camera2D/CanvasLayer/Control" unique_id=1046809885]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -111.0
+offset_right = -15.600098
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_ufwb2")
+texture_pressed = SubResource("AtlasTexture_ufwb2")
+texture_hover = SubResource("AtlasTexture_6cdou")
+texture_disabled = SubResource("AtlasTexture_ufwb2")
+texture_focused = SubResource("AtlasTexture_6cdou")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/Control/Quit" unique_id=353275364]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_mhnvy")
+theme_override_font_sizes/font_size = 28
+text = "Sair"
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer/Control" unique_id=987457643]
+material = SubResource("ShaderMaterial_v86rl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Camera2D/CanvasLayer/Control" unique_id=1480106570]
+color = Color(0.7458131, 0.5533054, 0.9343941, 1)
+
+[node name="hover" type="AudioStreamPlayer2D" parent="." unique_id=145846944]
+stream = ExtResource("12_6cdou")
+
+[node name="click" type="AudioStreamPlayer2D" parent="." unique_id=1242209019]
+stream = ExtResource("13_i42df")
+
+[node name="creak1" type="AudioStreamPlayer2D" parent="." unique_id=280488913]
+stream = ExtResource("14_7jp70")
+
+[node name="creak2" type="AudioStreamPlayer2D" parent="." unique_id=674620964]
+stream = ExtResource("15_mxgkd")
+
+[node name="slam" type="AudioStreamPlayer2D" parent="." unique_id=1404084128]
+stream = ExtResource("16_mxgkd")
+
+[node name="flashback" type="AudioStreamPlayer2D" parent="." unique_id=2006576197]
+
+[node name="ambience" type="AudioStreamPlayer2D" parent="." unique_id=1009758690]
+stream = ExtResource("18_3dmrc")
+autoplay = true
+parameters/looping = true
+
+[connection signal="button_up" from="Camera2D/CanvasLayer/Control/PlayBtn" to="." method="_on_play_btn_button_up"]
+[connection signal="mouse_entered" from="Camera2D/CanvasLayer/Control/PlayBtn" to="." method="_on_play_btn_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/CanvasLayer/Control/PlayBtn" to="." method="_on_play_btn_mouse_exited"]
+[connection signal="button_up" from="Camera2D/CanvasLayer/Control/Quit" to="." method="_on_quit_button_up"]
+[connection signal="mouse_entered" from="Camera2D/CanvasLayer/Control/Quit" to="." method="_on_quit_mouse_entered"]

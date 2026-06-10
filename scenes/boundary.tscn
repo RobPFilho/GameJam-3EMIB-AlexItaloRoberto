@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dv7r80tmrpk76"]
+
+[ext_resource type="Script" uid="uid://dm3aa3a2o562b" path="res://boundary.gd" id="1_6flaw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ymxvx"]
+
+[node name="Boundary" type="Node2D" unique_id=495605630]
+script = ExtResource("1_6flaw")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1933799517]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1720761268]
+shape = SubResource("WorldBoundaryShape2D_ymxvx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

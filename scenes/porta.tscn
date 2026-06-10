@@ -1,0 +1,275 @@
+[gd_scene format=3 uid="uid://c8kbobp84ol28"]
+
+[ext_resource type="Script" uid="uid://crnakd6wyinv1" path="res://portas.gd" id="1_hlcnn"]
+[ext_resource type="Shader" uid="uid://lks88x17wg18" path="res://scripts/porta.gdshader" id="2_8gms0"]
+[ext_resource type="FontFile" uid="uid://baquniuy4tqf8" path="res://fonts/Frickbears-Regular.otf" id="2_ede8e"]
+[ext_resource type="Texture2D" uid="uid://de0w1jy3tki6n" path="res://sprites/porta.png" id="2_rwxfp"]
+[ext_resource type="Shader" uid="uid://dp26mhx7ivi2a" path="res://scripts/outline.gdshader" id="4_vqm4t"]
+[ext_resource type="Texture2D" uid="uid://bfmw40wgjjusy" path="res://sprites/portas.png" id="5_vqm4t"]
+[ext_resource type="AudioStream" uid="uid://ejve2u3wv2if" path="res://sounds/portalClose.mp3" id="7_rp0bl"]
+[ext_resource type="AudioStream" uid="uid://dmkrwwrgxxf0s" path="res://sounds/creak1.mp3" id="9_qvu8n"]
+[ext_resource type="AudioStream" uid="uid://dvh2y8ftoebmq" path="res://sounds/woosh.mp3" id="9_tcsge"]
+[ext_resource type="AudioStream" uid="uid://5t1k7uwqx72c" path="res://sounds/creak2.mp3" id="10_tcsge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gms0"]
+size = Vector2(64, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc027"]
+shader = ExtResource("4_vqm4t")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ede8e"]
+shader = ExtResource("2_8gms0")
+shader_parameter/flame_strength = 6.55
+shader_parameter/speed = 1.985
+shader_parameter/pixel_size = 24.0
+shader_parameter/tint = Color(0.47830725, 0.1786675, 0.7064325, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ede8e"]
+atlas = ExtResource("5_vqm4t")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc027"]
+atlas = ExtResource("5_vqm4t")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxeu8"]
+atlas = ExtResource("5_vqm4t")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp0bl"]
+atlas = ExtResource("5_vqm4t")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ede8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ede8e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc027")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxeu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp0bl")
+}],
+"loop": false,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_8gms0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vqm4t"]
+resource_name = "clear"
+length = 0.8333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8333333),
+"transitions": PackedFloat32Array(4.594792, 0.3077861),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.021250797, 0.021250797)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8333333),
+"transitions": PackedFloat32Array(4.594792, 0.3077861),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ede8e"]
+resource_name = "swirl"
+length = 0.8333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8333333),
+"transitions": PackedFloat32Array(0.3077861, 4.594792),
+"update": 0,
+"values": [Vector2(0.021250797, 0.021250797), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8333333),
+"transitions": PackedFloat32Array(0.3077861, 4.594792),
+"update": 0,
+"values": [6.2831855, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vc027"]
+_data = {
+&"RESET": SubResource("Animation_8gms0"),
+&"clear": SubResource("Animation_vqm4t"),
+&"swirl": SubResource("Animation_ede8e")
+}
+
+[node name="Porta" type="Node2D" unique_id=1106559357 groups=["portas"]]
+script = ExtResource("1_hlcnn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=982537444]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=515509468]
+shape = SubResource("RectangleShape2D_8gms0")
+
+[node name="Label" type="Label" parent="." unique_id=885083839]
+visible = false
+offset_left = -20.0
+offset_top = -92.0
+offset_right = 20.0
+offset_bottom = -69.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_ede8e")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D3" type="Sprite2D" parent="." unique_id=1696869110]
+texture_filter = 1
+material = SubResource("ShaderMaterial_vc027")
+scale = Vector2(4, 4)
+texture = ExtResource("2_rwxfp")
+
+[node name="AnimatedSprite2D2" type="Sprite2D" parent="." unique_id=710279970]
+texture_filter = 1
+material = SubResource("ShaderMaterial_ede8e")
+scale = Vector2(4, 4)
+texture = ExtResource("2_rwxfp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=331627710]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ede8e")
+animation = &"move"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=333090934]
+libraries/ = SubResource("AnimationLibrary_vc027")
+
+[node name="woosh" type="AudioStreamPlayer2D" parent="." unique_id=1710212101]
+stream = ExtResource("9_tcsge")
+
+[node name="clear" type="AudioStreamPlayer2D" parent="." unique_id=719151243]
+stream = ExtResource("7_rp0bl")
+volume_db = -2.0
+max_distance = 380.0
+bus = &"portal"
+
+[node name="creak1" type="AudioStreamPlayer2D" parent="." unique_id=205007781]
+stream = ExtResource("9_qvu8n")
+max_distance = 380.0
+bus = &"portal"
+
+[node name="creak2" type="AudioStreamPlayer2D" parent="." unique_id=791639350]
+stream = ExtResource("10_tcsge")
+max_distance = 380.0
+bus = &"portal"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
